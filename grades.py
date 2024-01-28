@@ -23,11 +23,15 @@ def get_user_input():
         print("You entered a wrong value")
 
 
-def read_from_csv(file):
+def read_from_csv_without_names(file):
+    my_list = []
     with open(file, newline='') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        spamreader = csv.reader(csvfile, delimiter=' ')
         for row in spamreader:
-            print(', '.join(row))
+            test = row
+            my_list = row
+            #print(', '.join(row))
+    return my_list
 
 def print_list(test):
     print(test)
@@ -102,7 +106,8 @@ if __name__ == '__main__':
 #            grades = convert_num_to_letter(cmd)
 #            print_list(grades)
         elif(choice == "C"):
-            print("NO")
+            file_name = str(input("Enter name of csv file:\n"))
+            read_from_csv_without_names(file_name)
 
     except ValueError:
             print("Enter valid choice")
