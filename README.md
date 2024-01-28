@@ -5,7 +5,6 @@ The program has the option to either read from user input or read from csv files
 
 The format of the csv file is as follows (not comma-delimited supported at the moment, only space-delimited):
 
-Names Grades
-
+Names Grades  
 Jason 76.4  
 Jorge 86.3
