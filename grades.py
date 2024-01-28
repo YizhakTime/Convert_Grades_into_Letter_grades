@@ -1,18 +1,20 @@
 import sys
 import csv
 
+
 def get_command_line_input():
     arr = []
     length = len(sys.argv)
-    if(length <= 1):
+    if (length <= 1):
         print("Add arguments!")
     else:
         for i in range(1, length):
-            if(float(sys.argv[i]) <= 99.9):
+            if (float(sys.argv[i]) <= 99.9):
                 arr.append(float(sys.argv[i]))
             else:
                 print("Need to enter decimal from 1 to 99.9!")
     return arr
+
 
 def get_user_input():
     user_input = []
@@ -32,7 +34,7 @@ def read_from_csv(file):
     return my_list
 
 def print_list(test):
-    print(test)
+    print (test)
 
 def convert_num_to_letter(arr):
     grades = []
