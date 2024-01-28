@@ -7,5 +7,5 @@ The format of the csv file is as follows (not comma-delimited supported at the m
 
 Names Grades
 
-Jason 76.4
+Jason 76.4  
 Jorge 86.3
