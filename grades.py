@@ -24,6 +24,7 @@ def get_user_input():
     except ValueError:
         print("You entered a wrong value")
 
+
 def read_from_csv(file):
     my_list = []
     with open(file, newline='') as csvfile:
@@ -33,8 +34,10 @@ def read_from_csv(file):
             my_list.append(row)
     return my_list
 
+
 def print_list(test):
     print (test)
+
 
 def convert_num_to_letter(arr):
     grades = []
