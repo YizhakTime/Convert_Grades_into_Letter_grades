@@ -17,8 +17,10 @@ def get_command_line_input():
 def get_user_input():
     user_input = []
     try:
-        choice = str(input("Enter whether you want to enter grades via user input or read from csv file\n"))   
+        user_input = list(map(float, input("Enter grades\n").split()))
+        return user_input
     except ValueError:
+        print("You entered a wrong value")
 
 
 def read_from_csv(file):
@@ -86,19 +88,23 @@ def convert_num_to_letter(arr):
 
 if __name__ == '__main__':
     choice = ""
-    print("You can either enter grades via user input or via csv file\n")
-    print("To enter via UI, enter U, or if you want to enter csv, enter C")
+    print("To enter user input, type U")
+    print("To load a csv file, type C")
     try:
-        choice = str(input("Enter whether you want to enter grades via user input or read from csv file\n"))   
+        choice = str(input("Enter your choice:\n"))   
         if(choice == "U"):
+            user_inp = get_user_input()
+            print_list(user_inp)
+            grades = convert_num_to_letter(user_inp)
+            print_list(grades)
 #            cmd = get_command_line_input()
 #            print_list(cmd)
 #            grades = convert_num_to_letter(cmd)
 #            print_list(grades)
         elif(choice == "C"):
+            print("NO")
 
     except ValueError:
             print("Enter valid choice")
 
-   
                 # file_name = input("Enter csv file")
