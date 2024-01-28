@@ -22,7 +22,6 @@ def get_user_input():
     except ValueError:
         print("You entered a wrong value")
 
-
 def read_from_csv(file):
     my_list = []
     with open(file, newline='') as csvfile:
