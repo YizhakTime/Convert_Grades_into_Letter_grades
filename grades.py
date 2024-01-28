@@ -1,6 +1,7 @@
 import csv
 import sys
 
+
 def get_command_line_input():
     arr = []
     length = len(sys.argv)
@@ -92,7 +93,7 @@ def convert_num_to_letter(arr):
                 grades.append("D")
                 # print("You got a D")
             elif 67 <= arr[i] <= 69.9:
-                grades.append('D+')
+                grades.append("D+")
                 # print("You got a D+")
             elif 70 <= arr[i] <= 72.9:
                 grades.append("C-")
@@ -119,6 +120,7 @@ def convert_num_to_letter(arr):
                 grades.append("A")
                 # print("You got a A")
     return grades
+
 
 # A = 93-100
 # A- = 90-92
