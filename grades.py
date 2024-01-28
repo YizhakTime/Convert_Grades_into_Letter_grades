@@ -23,14 +23,13 @@ def get_user_input():
         print("You entered a wrong value")
 
 
-def read_from_csv_without_names(file):
+def read_from_csv(file):
     my_list = []
     with open(file, newline='') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=' ')
-        for row in spamreader:
-            test = row
-            my_list = row
-            #print(', '.join(row))
+        reader = csv.reader(csvfile, delimiter=' ')
+        next(reader, None) 
+        for row in reader:
+            my_list.append(row)
     return my_list
 
 def print_list(test):
@@ -38,43 +37,84 @@ def print_list(test):
 
 def convert_num_to_letter(arr):
     grades = []
-    for i in range(len(arr)):
-        if(arr[i] <= 59.9):
-            grades.append('F')
-            # print("You got a F")
-        elif(60 <= arr[i] <= 62.9):
-            grades.append('D-')
-            # print("You got a D-")
-        elif(63 <= arr[i] <= 66.9):
-            grades.append('D')
-            # print("You got a D")
-        elif(67 <= arr[i] <= 69.9):
-            grades.append('D+')
-            # print("You got a D+")
-        elif(70 <= arr[i] <= 72.9):
-            grades.append('C-')            
-            # print("You got a C-")
-        elif(73 <= arr[i] <= 76.9):
-            grades.append('C')
-            # print("You got a C")
-        elif(77 <= arr[i] <= 79.9):
-            grades.append('C+')
-            # print("You got a C+") 
-        elif(80 <= arr[i] <= 82.9):
-            grades.append('B-')            
-            # print("You got a B-")
-        elif(83 <= arr[i] <= 86.9):
-            grades.append('B')            
-            # print("You got a B") 
-        elif(87 <= arr[i] <= 89.9):
-            grades.append('B+')            
-            # print("You got a B+")
-        elif(90 <= arr[i] <= 92.9):
-            grades.append('A-')
-            # print("You got a A")
-        elif(93 <= arr[i] <= 99.9):
-            grades.append('A')
-            # print("You got a A")
+    if(any(isinstance(el, list) for el in arr) == True):
+        #any() returns true if ANY of elements in the tuple, list are true
+        #isinstance() returns true if ANY of the elements in the object (list in this case) is a list
+        for i in range(0, len(arr)):
+            for j in range(1, len(arr[i])):
+                if(float(arr[i][j]) <= 59.9):
+                    arr[i][j] = 'F'
+                    # print("You got a F")
+                elif(60 <= float(arr[i][j]) <= 62.9):
+                    arr[i][j] = 'D-'
+                    # print("You got a D-")
+                elif(63 <= float(arr[i][j]) <= 66.9):
+                    arr[i][j] = 'D'
+                    # print("You got a D")
+                elif(67 <= float(arr[i][j]) <= 69.9):
+                    arr[i][j] = 'D+'
+                    # print("You got a D+")
+                elif(70 <= float(arr[i][j]) <= 72.9):
+                    arr[i][j] = 'C-'
+                    # print("You got a C-")
+                elif(73 <= float(arr[i][j]) <= 76.9):
+                    arr[i][j] = 'C'
+                    # print("You got a C")
+                elif(77 <= float(arr[i][j]) <= 79.9):
+                    arr[i][j] = 'C+'
+                    # print("You got a C+") 
+                elif(80 <= float(arr[i][j]) <= 82.9):
+                    arr[i][j] = 'B-'
+                    # print("You got a B-")
+                elif(83 <= float(arr[i][j]) <= 86.9):
+                    arr[i][j] = 'B'
+                    # print("You got a B") 
+                elif(87 <= float(arr[i][j]) <= 89.9):
+                    arr[i][j] = 'B+'
+                    # print("You got a B+")
+                elif(90 <= float(arr[i][j]) <= 92.9):
+                    arr[i][j] = 'A-'
+                    # print("You got a A")
+                elif(93 <= float(arr[i][j]) <= 99.9):
+                    arr[i][j] = 'A'
+    else:
+        for i in range(len(arr)):
+            if(arr[i] <= 59.9):
+                grades.append('F')
+                # print("You got a F")
+            elif(60 <= arr[i] <= 62.9):
+                grades.append('D-')
+                # print("You got a D-")
+            elif(63 <= arr[i] <= 66.9):
+                grades.append('D')
+                # print("You got a D")
+            elif(67 <= arr[i] <= 69.9):
+                grades.append('D+')
+                # print("You got a D+")
+            elif(70 <= arr[i] <= 72.9):
+                grades.append('C-')            
+                # print("You got a C-")
+            elif(73 <= arr[i] <= 76.9):
+                grades.append('C')
+                # print("You got a C")
+            elif(77 <= arr[i] <= 79.9):
+                grades.append('C+')
+                # print("You got a C+") 
+            elif(80 <= arr[i] <= 82.9):
+                grades.append('B-')            
+                # print("You got a B-")
+            elif(83 <= arr[i] <= 86.9):
+                grades.append('B')            
+                # print("You got a B") 
+            elif(87 <= arr[i] <= 89.9):
+                grades.append('B+')            
+                # print("You got a B+")
+            elif(90 <= arr[i] <= 92.9):
+                grades.append('A-')
+                # print("You got a A")
+            elif(93 <= arr[i] <= 99.9):
+                grades.append('A')
+                # print("You got a A")
     return grades
 
 #A = 93-100
@@ -101,15 +141,13 @@ if __name__ == '__main__':
             print_list(user_inp)
             grades = convert_num_to_letter(user_inp)
             print_list(grades)
-#            cmd = get_command_line_input()
-#            print_list(cmd)
-#            grades = convert_num_to_letter(cmd)
-#            print_list(grades)
         elif(choice == "C"):
-            file_name = str(input("Enter name of csv file:\n"))
-            read_from_csv_without_names(file_name)
-
+            try: 
+                file_name = str(input("Enter name of csv file:\n"))
+                csv_data = read_from_csv(file_name)
+                convert_num_to_letter(csv_data)
+                print_list(csv_data)
+            except ValueError:
+                print("You entered a wrong value")
     except ValueError:
             print("Enter valid choice")
-
-                # file_name = input("Enter csv file")
