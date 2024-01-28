@@ -11,6 +11,6 @@ jobs:
 
       - name: Run my_linter
         uses: github/my_linter@v4
-        evv:
+        env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
