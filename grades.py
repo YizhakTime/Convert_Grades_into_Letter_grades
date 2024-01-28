@@ -35,6 +35,15 @@ def read_from_csv(file):
     return my_list
 
 
+def write_csv(file, csv_list):
+    header = ["Names", "Grades"]
+    csv_list.insert(0, header)
+    with open(file, "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, delimiter=" ")
+        for i in range(0, len(csv_list)):
+            writer.writerow(csv_list[i])
+
+
 def print_list(test):
     print(test)
 
@@ -152,8 +161,9 @@ if __name__ == "__main__":
                 file_name = str(input("Enter name of csv file:\n"))
                 csv_data = read_from_csv(file_name)
                 convert_num_to_letter(csv_data)
-                print_list(csv_data)
+                write_csv(file_name, csv_data)
+                # print_list(csv_data)
             except ValueError:
-                print("You entered a wrong value")
+                print("CSV file does not exist or is corrupted")
     except ValueError:
         print("Enter valid choice")
